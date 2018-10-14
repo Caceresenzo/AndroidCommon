@@ -1,21 +1,31 @@
 package caceresenzo.android.libs;
 
+import caceresenzo.libs.exception.UtilityClassCantBeInstanced;
+
+/**
+ * Android Utilities
+ * 
+ * @author Enzo CACERES
+ */
 public class AndroidUtils {
 	
-	public static boolean currentVersionSupportBigNotification() {
-		int sdkVersion = android.os.Build.VERSION.SDK_INT;
-		if (sdkVersion >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
-			return true;
-		}
-		return false;
+	/* Constructor */
+	private AndroidUtils() {
+		throw new UtilityClassCantBeInstanced();
 	}
 	
+	/**
+	 * @return If you have access to big notification, useful in music player for exemple
+	 */
+	public static boolean currentVersionSupportBigNotification() {
+		return android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN;
+	}
+	
+	/**
+	 * @return If you have access to control available on the lock screen, useful in music player for exemple
+	 */
 	public static boolean currentVersionSupportLockScreenControls() {
-		int sdkVersion = android.os.Build.VERSION.SDK_INT;
-		if (sdkVersion >= android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-			return true;
-		}
-		return false;
+		return android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH;
 	}
 	
 }

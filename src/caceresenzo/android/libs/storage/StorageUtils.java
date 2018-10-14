@@ -1,29 +1,42 @@
 package caceresenzo.android.libs.storage;
 
 import android.os.Environment;
+import caceresenzo.libs.exception.UtilityClassCantBeInstanced;
 
 /**
+ * Storage Utilities
  * 
- * <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
- *
+ * Require these to be added in your AndroidManifest.xml:<br>
+ * <code>&lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot; /&gt; <br>
+ * &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;</code>
+ * 
+ * @author Enzo CACERES
  */
 public class StorageUtils {
 	
-	public boolean isExternalStorageWritable() {
-		String state = Environment.getExternalStorageState();
-		if (Environment.MEDIA_MOUNTED.equals(state)) {
-			return true;
-		}
-		return false;
+	/* Constructor */
+	private StorageUtils() {
+		throw new UtilityClassCantBeInstanced();
 	}
 	
-	/* Checks if external storage is available to at least read */
-	public boolean isExternalStorageReadable() {
+	/**
+	 * Checks if external storage is available to at least read
+	 * 
+	 * @return If you can read on the external storage
+	 */
+	public static boolean isExternalStorageReadable() {
 		String state = Environment.getExternalStorageState();
-		if (Environment.MEDIA_MOUNTED.equals(state) || Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
-			return true;
-		}
-		return false;
+		
+		return Environment.MEDIA_MOUNTED.equals(state) || Environment.MEDIA_MOUNTED_READ_ONLY.equals(state);
+	}
+	
+	/**
+	 * Check if external storage is available to write
+	 * 
+	 * @return If you can write on the external storage
+	 */
+	public static boolean isExternalStorageWritable() {
+		return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
 	}
 	
 }

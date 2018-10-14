@@ -9,7 +9,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.content.FileProvider;
 import caceresenzo.android.libs.dialog.DialogUtils;
-import caceresenzo.android.libs.intent.IntentUtils;
+import caceresenzo.android.libs.intent.CommonIntentUtils;
 import caceresenzo.libs.comparator.Version;
 import caceresenzo.libs.network.Downloader;
 import caceresenzo.libs.network.Downloader.OnDownloadProgress;
@@ -48,7 +48,7 @@ public class AndroidUpdater {
 				if (listener != null) {
 					listener.onInstall();
 				}
-				IntentUtils.installApplication(activity, file.getAbsolutePath(), requestId);
+				CommonIntentUtils.installApplication(activity, file.getAbsolutePath(), requestId);
 				if (listener != null) {
 					listener.onFinish();
 				}
@@ -103,7 +103,7 @@ public class AndroidUpdater {
 					if (listener != null) {
 						listener.onInstall();
 					}
-					IntentUtils.installApplication(activity, file.getAbsolutePath(), requestId);
+					CommonIntentUtils.installApplication(activity, file.getAbsolutePath(), requestId);
 					if (listener != null) {
 						listener.onFinish();
 					}

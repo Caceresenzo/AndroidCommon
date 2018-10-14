@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
+import caceresenzo.libs.exception.UtilityClassCantBeInstanced;
 
 /**
  * Network Utilities
@@ -11,6 +12,11 @@ import android.telephony.TelephonyManager;
  * @author Enzo CACERES
  */
 public class NetworkUtils {
+	
+	/* Constructor */
+	private NetworkUtils() {
+		throw new UtilityClassCantBeInstanced();
+	}
 	
 	/**
 	 * @param context

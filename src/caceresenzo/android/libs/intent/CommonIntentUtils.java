@@ -7,8 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
-public class IntentUtils {
-
+public class CommonIntentUtils {
+	
 	public static void installApplication(Activity activity, String path, int requestId) {
 		Intent intent = new Intent(Intent.ACTION_VIEW);
 		Uri uri = Uri.fromFile(new File(path));
@@ -32,5 +32,10 @@ public class IntentUtils {
 		context.startActivity(Intent.createChooser(intent, information));
 	}
 	
+	public static void openUrl(Activity activity, String url) {
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+		intent.setData(Uri.parse(url));
+		activity.startActivity(intent);
+	}
 	
 }

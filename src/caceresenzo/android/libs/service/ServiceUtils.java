@@ -2,6 +2,7 @@ package caceresenzo.android.libs.service;
 
 import android.app.ActivityManager;
 import android.content.Context;
+import caceresenzo.libs.exception.UtilityClassCantBeInstanced;
 
 /**
  * Service Utilities
@@ -9,6 +10,11 @@ import android.content.Context;
  * @author Enzo CACERES
  */
 public class ServiceUtils {
+	
+	/* Constructor */
+	private ServiceUtils() {
+		throw new UtilityClassCantBeInstanced();
+	}
 	
 	/**
 	 * Check if your service is running by its class name
@@ -21,6 +27,7 @@ public class ServiceUtils {
 	 * @throws NullPointerException
 	 *             If the {@code context} or the {@code clazz} is null
 	 */
+	@SuppressWarnings("deprecation")
 	public static boolean isServiceRunning(Context context, Class<?> clazz) {
 		if (context == null || clazz == null) {
 			throw new NullPointerException((context == null ? "Context" : "Service class") + " can't be null.");
