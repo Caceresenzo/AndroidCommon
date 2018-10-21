@@ -1,7 +1,11 @@
 package caceresenzo.android.libs.service;
 
 import android.app.ActivityManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
+import android.os.Build;
+import android.support.annotation.StringRes;
 import caceresenzo.libs.exception.UtilityClassCantBeInstanced;
 
 /**
@@ -42,6 +46,28 @@ public class ServiceUtils {
 		}
 		
 		return false;
+	}
+	
+	/**
+	 * Create a notification channel
+	 * 
+	 * @param context
+	 *            Application context
+	 * @param channelId
+	 *            Channel name/id
+	 * @param nameRessourceId
+	 *            Channel name (String ressource)
+	 * @param descriptionRessourceId
+	 *            Channel description (String ressource)
+	 */
+	public static void createNotificationChannel(Context context, String channelId, @StringRes int nameRessourceId, @StringRes int descriptionRessourceId) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+			NotificationChannel channel = new NotificationChannel(channelId, context.getString(nameRessourceId), NotificationManager.IMPORTANCE_DEFAULT);
+			channel.setDescription(context.getString(descriptionRessourceId));
+			
+			NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+			notificationManager.createNotificationChannel(channel);
+		}
 	}
 	
 }
