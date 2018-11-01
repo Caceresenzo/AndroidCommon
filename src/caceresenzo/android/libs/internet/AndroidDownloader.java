@@ -1,11 +1,14 @@
 package caceresenzo.android.libs.internet;
 
+import java.net.URLDecoder;
+
 import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Environment;
 import caceresenzo.android.libs.toast.ToastUtils;
+import caceresenzo.libs.filesystem.FilenameUtils;
 
 public class AndroidDownloader {
 	
@@ -17,9 +20,14 @@ public class AndroidDownloader {
 		askDownload(context, uri, downloadFileName, null);
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static void askDownload(Context context, Uri uri, String downloadFileName, String downloadMessage) {
 		if (downloadMessage != null) {
 			ToastUtils.makeLong(context, downloadMessage);
+		}
+		
+		if (downloadFileName == null) {
+			downloadFileName = FilenameUtils.getName(URLDecoder.decode(uri.getEncodedPath()));
 		}
 		
 		DownloadManager.Request request = new DownloadManager.Request(uri);
