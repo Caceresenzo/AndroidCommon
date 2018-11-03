@@ -88,6 +88,35 @@ public class ApplicationUtils {
 	}
 	
 	/**
+	 * Open the PlayStore for this application.<br>
+	 * <br>
+	 * See {@link ApplicationUtils#openStore(Context, String)} for more help.
+	 * 
+	 * @param context
+	 *            Application context
+	 */
+	public static void openStore(Context context) {
+		openStore(context, context.getPackageName());
+	}
+	
+	/**
+	 * Open the PlayStore with a specified target application package.<br>
+	 * If the PlayStore is not installed or not available, this will the web version.
+	 * 
+	 * @param context
+	 *            Application context
+	 * @param applicationPackageName
+	 *            Target application context
+	 */
+	public static void openStore(Context context, String applicationPackageName) {
+		try {
+			context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + applicationPackageName)));
+		} catch (android.content.ActivityNotFoundException activityNotFoundException) {
+			context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + applicationPackageName)));
+		}
+	}
+	
+	/**
 	 * Rarely working, get main Android application instance
 	 * 
 	 * @return {@link android.app.ActivityThread} application instance
