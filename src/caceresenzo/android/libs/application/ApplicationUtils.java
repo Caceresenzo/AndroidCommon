@@ -110,9 +110,15 @@ public class ApplicationUtils {
 	 */
 	public static void openStore(Context context, String applicationPackageName) {
 		try {
-			context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + applicationPackageName)));
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + applicationPackageName));
+			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			
+			context.startActivity(intent);
 		} catch (android.content.ActivityNotFoundException activityNotFoundException) {
-			context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + applicationPackageName)));
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + applicationPackageName));
+			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			
+			context.startActivity(intent);
 		}
 	}
 	

@@ -41,6 +41,7 @@ public class AdmAndroidDownloader {
 			String admPackage = pro ? PRO_VERSION_PACKAGE : NORMAL_VERSION_PACKAGE;
 			
 			Intent intent = new Intent("android.intent.action.MAIN");
+			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			intent.setClassName(admPackage, admPackage + ".AEditor");
 			
 			intent.putExtra("android.intent.extra.TEXT", url);
