@@ -1,7 +1,6 @@
 package caceresenzo.android.libs.storage;
 
 import android.os.Environment;
-import caceresenzo.libs.exception.UtilityClassCantBeInstanced;
 
 /**
  * Storage Utilities
@@ -16,7 +15,7 @@ public class StorageUtils {
 	
 	/* Constructor */
 	private StorageUtils() {
-		throw new UtilityClassCantBeInstanced();
+		throw new IllegalStateException();
 	}
 	
 	/**

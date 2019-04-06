@@ -6,7 +6,6 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Build;
 import android.support.annotation.StringRes;
-import caceresenzo.libs.exception.UtilityClassCantBeInstanced;
 
 /**
  * Service Utilities
@@ -17,7 +16,7 @@ public class ServiceUtils {
 	
 	/* Constructor */
 	private ServiceUtils() {
-		throw new UtilityClassCantBeInstanced();
+		throw new IllegalStateException();
 	}
 	
 	/**

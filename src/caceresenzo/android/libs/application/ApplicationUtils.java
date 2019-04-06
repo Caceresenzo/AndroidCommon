@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import caceresenzo.libs.exception.UtilityClassCantBeInstanced;
 
 /**
  * Application Utilities
@@ -32,7 +31,7 @@ public class ApplicationUtils {
 	
 	/* Constructor */
 	private ApplicationUtils() {
-		throw new UtilityClassCantBeInstanced();
+		throw new IllegalStateException();
 	}
 	
 	/**

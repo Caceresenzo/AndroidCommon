@@ -1,7 +1,5 @@
 package caceresenzo.android.libs;
 
-import caceresenzo.libs.exception.UtilityClassCantBeInstanced;
-
 /**
  * Android Utilities
  * 
@@ -11,7 +9,7 @@ public class AndroidUtils {
 	
 	/* Constructor */
 	private AndroidUtils() {
-		throw new UtilityClassCantBeInstanced();
+		throw new IllegalStateException();
 	}
 	
 	/**

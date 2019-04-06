@@ -2,7 +2,6 @@ package caceresenzo.android.libs.toast;
 
 import android.content.Context;
 import android.widget.Toast;
-import caceresenzo.libs.exception.UtilityClassCantBeInstanced;
 
 /**
  * {@link Toast} Utilities
@@ -13,7 +12,7 @@ public class ToastUtils {
 	
 	/* Constructor */
 	private ToastUtils() {
-		throw new UtilityClassCantBeInstanced();
+		throw new IllegalStateException();
 	}
 	
 	/**
